@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Desi</title>
+    <link rel="icon" href="img/1.png" type="ix-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous" />
+    <style>
+      h1,
+      h2 {
+        color: white;
+      }
+      footer {
+        color: white;
+      }
+      .carousel-control-next-icon,
+      .carousel-control-prev-icon {
+        background-color: black;
+        border-radius: 50%;
+      }
+      .carousel-control-next,
+      .carousel-control-prev {
+        z-index: 1;
+        width: 5%;
+      }
+      .carousel-control-prev {
+        left: 10px;
+      }
+      .carousel-control-next {
+        right: 10px;
+      }
+      .artis-link {
+        text-decoration: none;
+        color: #adb5bd;
+      }
+      .artis-link:hover {
+        color: white;
+      }
+      .artis-name {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: #adb5bd;
+      }
+      .artis-name:hover {
+        color: gold;
+      }
+      .col-md-3 {
+        margin-bottom: 20px;
+      }
+      /* Gaya untuk modal */
+      .modal-content {
+        background-color: #121212; /* Warna gelap khas Spotify */
+        color: #ffffff; /* Warna teks */
+        border-radius: 10px; /* Sudut membulat */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Efek bayangan */
+      }
+      .modal-header {
+        border-bottom: 1px solid #333333; /* Garis pemisah */
+      }
+      .modal-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-align: center;
+        color: #ffdf00; /* Hijau khas Spotify */
+      }
+      .list-group-item {
+        background-color: #121212; /* Warna dasar daftar lagu */
+        color: #b3b3b3; /* Warna teks daftar */
+        border: none; /* Hilangkan border */
+        padding: 10px 15px;
+      }
+      .list-group-item:hover {
+        background-color: #1db954; /* Warna hijau saat hover */
+        color: #ffffff; /* Teks putih saat hover */
+        cursor: pointer;
+      }
+      audio {
+        border: 1px solid #333333; /* Batas untuk audio player */
+        border-radius: 5px;
+        background-color: #000; /* Warna gelap di pemutar */
+      }
+    </style>
+  </head>
+
+  <body class="bg-dark text-light">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="img/1.png"
+            alt="Spotify Logo"
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top" />Musik Desi</a
+        >
+        <form id="searchForm" class="d-flex" role="search">
+          <input
+            id="searchInput"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search" />
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="daftar.html"
+                >Daftar</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-light" type="submit" href="masuk.html">Masuk</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <h1 class="text-center">Daftar Musik Populer</h1>
+      <h2 class="mb-4">Artis Populer</h2>
+
+      <!-- Carousel -->
+      <div id="artisCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/mahalini.html"
+                  class="artis-link"
+                  data-artis="Mahalini">
+                  <img
+                    src="img/mh.jpg"
+                    alt="Mahalini"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Mahalini</h5>
+                </a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/tulus.html"
+                  class="artis-link"
+                  data-artis="Tulus">
+                  <img
+                    src="img/tulus.jpg"
+                    alt="Tulus"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Tulus</h5>
+                </a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/raisa.html"
+                  class="artis-link"
+                  data-artis="Raisa">
+                  <img
+                    src="img/raisa.jpg"
+                    alt="Raisa"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Raisa</h5>
+                </a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/rizky.html"
+                  class="artis-link"
+                  data-artis="RizkyFebian">
+                  <img
+                    src="img/rizky.jpg"
+                    alt="Rizky Febian"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Rizky Febian</h5>
+                </a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/agnes.html"
+                  class="artis-link"
+                  data-artis="Agnez Mo">
+                  <img
+                    src="img/agnez.jpg"
+                    alt="Agnes Mo"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Agnes Mo</h5>
+                </a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/isyana.html"
+                  class="artis-link"
+                  data-artis="Isyana">
+                  <img
+                    src="img/isyana.jpg"
+                    alt="Isyana"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Isyana</h5>
+                </a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/afgan.html"
+                  class="artis-link"
+                  data-artis="Afgan">
+                  <img
+                    src="img/afgan.jpg"
+                    alt="Afgan"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Afgan</h5>
+                </a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a
+                  href="daftarlagu/denny.html"
+                  class="artis-link"
+                  data-artis="Denny">
+                  <img
+                    src="img/denny.jpg"
+                    alt="Denny"
+                    class="rounded-circle img-fluid"
+                    style="width: 150px; height: 150px; object-fit: cover" />
+                  <h5 class="artis-name">Denny</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal untuk Daftar Lagu -->
+      <div
+        class="modal fade"
+        id="laguModal"
+        tabindex="-1"
+        aria-labelledby="laguModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-bottom border-secondary">
+              <h5 class="modal-title" id="laguModalLabel">Daftar Lagu</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <ul
+                id="laguList"
+                class="list-group list-group-flush bg-dark"></ul>
+              <div class="mt-4 text-center">
+                <audio id="laguPlayer" controls class="w-100">
+                  <source id="audioSource" type="audio/mp3" />
+                </audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-center py-3">© 2024 Music Desi</footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"></script>
+    <script>
+      // Data lagu per artis
+      const laguData = {
+        Mahalini: [
+          { title: "Sampai Menutup Mata (Mahalini)", url: "audio/mata.mp3" },
+          { title: "Sial (Mahalini)", url: "audio/sial.mp3" },
+          { title: "Bawa Dia Kembali (Mahalini)", url: "audio/kembali.mp3" },
+          { title: "Melawan Restu (Mahalini)", url: "audio/restu.mp3" },
+          { title: "Kisah Sempurna (Mahalini)", url: "audio/kisah.mp3" },
+          { title: "Ini Laguku (Mahalini)", url: "audio/laguku.mp3" },
+          { title: "Sisa Rasa (Mahalini)", url: "audio/sisa.mp3" },
+          { title: "Satu Tuju (Mahalini)", url: "audio/satu.mp3" },
+          { title: "Buru-buru (Mahalini)", url: "audio/buru.mp3" },
+          { title: "Bimbang (Mahalini)", url: "audio/bimbang.mp3" },
+        ],
+        Tulus: [
+          { title: "Hati-hati di Jalan (Tulus)", url: "audio/mata.mp3" },
+          { title: "Monokrom (Tulus)", url: "audio/sial.mp3" },
+          { title: "1000 Tahun Lamanya (Tulus)", url: "audio/kembali.mp3" },
+          { title: "Diri (Tulus)", url: "audio/restu.mp3" },
+          { title: "Interaksi (Tulus)", url: "audio/kisah.mp3" },
+          { title: "Manusia Kuat (Tulus)", url: "audio/laguku.mp3" },
+          { title: "Sewindu (Tulus)", url: "audio/sisa.mp3" },
+          { title: "Pamit (Tulus)", url: "audio/satu.mp3" },
+          { title: "Jatuh Suka -Tulus", url: "audio/buru.mp3" },
+          { title: "Sepatu (Tulus)", url: "audio/bimbang.mp3" },
+        ],
+        Rizky: [
+          { title: "Hingga Tua Bersama (Rizky Febian)", url: "audio/mata.mp3" },
+          { title: "Makna Cinta (Rizky Febian)", url: "audio/sial.mp3" },
+          { title: "Cuek (Rizky Febian)", url: "audio/kembali.mp3" },
+          { title: "Penantian Berharga (Rizky Febia)", url: "audio/restu.mp3" },
+          { title: "Seperti kisah (Rizky Febian)", url: "audio/kisah.mp3" },
+          { title: "Mantra Cinta (Rizky Febian)", url: "audio/laguku.mp3" },
+          { title: "Ragu (Rizky Febian)", url: "audio/sisa.mp3" },
+          { title: "Berpisah Itu Mudah (Rizky Febian)", url: "audio/satu.mp3" },
+          { title: "Aminlah Bersamkau (Rizky Febian)", url: "audio/buru.mp3" },
+          { title: "Dirimu Satu (Rizky Febian)", url: "audio/bimbang.mp3" },
+        ],
+        Afgan: [
+          { title: "Bukan Cinta Biasa (Afgan)", url: "audio/mata.mp3" },
+          { title: "Jodoh Pasti Bertemu (Afgan)", url: "audio/sial.mp3" },
+          { title: "Katakan Tidak (Afgan)", url: "audio/kembali.mp3" },
+          { title: "Ada (Afgan)", url: "audio/restu.mp3" },
+          { title: "Bawalah Cintaku (Afgan)", url: "audio/kisah.mp3" },
+          { title: "Kamu yang Ku Tunggu (Afgan)", url: "audio/laguku.mp3" },
+          { title: "Kunci Hati (Afgan)", url: "audio/sisa.mp3" },
+          { title: "Mengertilah Kasih (Afgan)", url: "audio/satu.mp3" },
+          { title: "Sadis (Afgan)", url: "audio/buru.mp3" },
+          { title: "Sabar (Afgan)", url: "audio/bimbang.mp3" },
+        ],
+        Agnes: [
+          { title: "Matahariku (Agnes Mo)", url: "audio/mata.mp3" },
+          { title: "Tanpa Kekasihku (Agnes Mo)", url: "audio/sial.mp3" },
+          { title: "Karena Ku Sanggup (Agnes Mo)", url: "audio/kembali.mp3" },
+          { title: "Teruskanlah (Agnes Mo)", url: "audio/restu.mp3" },
+          { title: "Rapuh (Agnes Mo)", url: "audio/kisah.mp3" },
+          { title: "Rindu (Agnes Mo)", url: "audio/laguku.mp3" },
+          { title: "Cinta Mati (Agnes Mo)", url: "audio/sisa.mp3" },
+          { title: "Jera (Agnes Mo)", url: "audio/satu.mp3" },
+          { title: "Cinta Di Ujung Jalan (Agnes Mo)", url: "audio/buru.mp3" },
+          { title: "Tak Ada Logika (Agnes Mo)", url: "audio/bimbang.mp3" },
+        ],
+        denny: [
+          { title: "Ojo Nangis (Denny Caknan)", url: "audio/mata.mp3" },
+          { title: "Mendung Tanpo Udan (Denny Caknan)", url: "audio/sial.mp3" },
+          {
+            title: "Tresno Waranggoko (Denny Caknan)",
+            url: "audio/kembali.mp3",
+          },
+          { title: "Widodari (Denny Caknan)", url: "audio/restu.mp3" },
+          { title: "Satru (Denny Caknan)", url: "audio/kisah.mp3" },
+          { title: "Lintang Angenan (Denny Caknan)", url: "audio/laguku.mp3" },
+          { title: "Angel (Denny Caknan)", url: "audio/sisa.mp3" },
+          { title: "Ngawi Nagih Janji (Denny Caknan)", url: "audio/satu.mp3" },
+          { title: "Los Dol (Denny Caknan)", url: "audio/buru.mp3" },
+          { title: "Wes Tatas (Denny Caknan)", url: "audio/bimbang.mp3" },
+        ],
+        Isyana: [
+          { title: "All Or Nothing (Isyana)", url: "audio/mata.mp3" },
+          { title: "Keep Being You (Isyana)", url: "audio/sial.mp3" },
+          { title: "Tap Tap Tap (Isyana)", url: "audio/kembali.mp3" },
+          { title: "Mimpi (Isyana)", url: "audio/restu.mp3" },
+          { title: "The Way I Love You (Isyana)", url: "audio/kisah.mp3" },
+          { title: "Tetap Dalam Jiwa (Isyana)", url: "audio/laguku.mp3" },
+          { title: "All Over Me (Isyana)", url: "audio/sisa.mp3" },
+          { title: "Kau Adalah (Isyana)", url: "audio/satu.mp3" },
+          { title: "Dibatas Waktu (Isyana)", url: "audio/buru.mp3" },
+          { title: "Pesta (Isyana)", url: "audio/bimbang.mp3" },
+        ],
+        raisa: [
+          { title: "All Or Nothing (Raisa)", url: "audio/mata.mp3" },
+          { title: "Keep Being You (Raisa)", url: "audio/sial.mp3" },
+          { title: "Tap Tap Tap (Raisa)", url: "audio/kembali.mp3" },
+          { title: "Mimpi (Raisa)", url: "audio/restu.mp3" },
+          { title: "The Way I Love You (Raisa)", url: "audio/kisah.mp3" },
+          { title: "Tetap Dalam Jiwa (Raisa)", url: "audio/laguku.mp3" },
+          { title: "All Over Me (Raisa)", url: "audio/sisa.mp3" },
+          { title: "Kau Adalah (Raisa)", url: "audio/satu.mp3" },
+          { title: "Dibatas Waktu (Raisa)", url: "audio/buru.mp3" },
+          { title: "Pesta (Raisa)", url: "audio/bimbang.mp3" },
+        ],
+      };
+
+      // Pencarian Lagu
+      const searchForm = document.getElementById("searchForm");
+      const searchInput = document.getElementById("searchInput");
+
+      searchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const query = searchInput.value.toLowerCase();
+        let foundSongs = [];
+        for (let artist in laguData) {
+          foundSongs = laguData[artist].filter((song) =>
+            song.title.toLowerCase().includes(query)
+          );
+          if (foundSongs.length > 0) break;
+        }
+        if (foundSongs.length > 0) {
+          const laguList = document.getElementById("laguList");
+          laguList.innerHTML = "";
+          foundSongs.forEach((song) => {
+            const li = document.createElement("li");
+            li.textContent = song.title;
+            li.addEventListener("click", function () {
+              const audioPlayer = document.getElementById("laguPlayer");
+              const audioSource = document.getElementById("audioSource");
+              audioSource.src = song.url;
+              audioPlayer.load();
+              audioPlayer.play();
+            });
+            laguList.appendChild(li);
+          });
+          const laguModal = new bootstrap.Modal(
+            document.getElementById("laguModal")
+          );
+          laguModal.show();
+        } else {
+          alert("Lagu tidak ditemukan!");
+        }
+      });
+    </script>
+  </body>
+</html>
